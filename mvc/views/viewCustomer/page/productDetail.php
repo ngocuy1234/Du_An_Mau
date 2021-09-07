@@ -4,7 +4,11 @@
 //    dd($dataDetail[0]['product_img']);
 // dd($data['dataCustomer'][0]['customer_img']);
 ?>
- 
+        <style>
+            .content{
+                margin-top: -50px;
+            }
+        </style>
         <!-- CONTENT -->
         <div class="content container">
             <nav aria-label="breadcrumb">
@@ -95,7 +99,7 @@
                                 <h3 class="add__product-heading">
                                     Hãy điền đủ thông tin để thêm vào giỏ hàng
                                 </h3>
-                                <form action="./../../Cart/addCart/<?=$dataDetail[0]['product_id']?>" method="POST">
+                                <form id="form__add-cart" onsubmit="addCart" action="./../../Cart/addCart/<?=$dataDetail[0]['product_id']?>" method="POST">
                                     <h4 class="form__label">Chọn size của bạn</h4>
                                     <div class="input__bag">
                                         <div class="form-check form-check-inline">
@@ -117,13 +121,43 @@
                                         <input style="padding-left:10px" type="number" class="form-control text" name="product_number"
                                             id="validationCustom01">
                                     </div>
-                                    <input type="submit" class="btn__add-product" value="Thêm giỏ hàng">
+                                    <input type="submit"  class="btn__add-product" id="btn_add-cart" value="Thêm giỏ hàng">
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+            <script>
+                var btn_add = document.querySelector('#btn_add-cart');
+                var form_add = document.querySelector('#form__add-cart');
+                function addCart(e){
+                    e.preventDefault();
+                    <?php 
+                    if(!isset($_SESSION['customer']) || empty($_SESSION['customer'])){ ?>
+                    swal({
+                       title: "Bạn chưa đăng nhâp !!!",
+                       text: "Bạn có đăng nhập không ?",
+                       icon: "warning",
+                       buttons: true,
+                       dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                    if (willDelete) {
+                     window.location="http://localhost/MVC/loginCustomer/";
+                    }
+                    });
+                    <?php }else{ ?>
+                        // form_add.onsubmit;
+                        // alert('Uy nguyễn');
+                        document.getElementById("form__add-cart").onsubmit;
+                    <?php } ?>
+                };
+                
+            </script>
+
+
             <style>
                 .section__cmtt {
     display: grid;

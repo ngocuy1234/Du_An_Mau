@@ -2,7 +2,6 @@
 // dd($data['dataCart']);
 ?>
         <!-- CONTENT -->
-        <h4>Uy nguyễn</h4>
         <div class="content">
             <div class="content__nav">
                 <ul class="content__nav-list">
