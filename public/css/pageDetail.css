@@ -1,0 +1,15 @@
+.content {
+    margin: 80px 0px;
+}
+
+.content__detail-title {
+    padding: 20px 0px;
+}
+
+.content__detail-img {
+    width: 70%;
+}
+
+.content__detail-content {
+    padding: 20px 0px;
+}
